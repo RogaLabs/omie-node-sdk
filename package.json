@@ -1,0 +1,55 @@
+{
+  "name": "omie-node-sdk",
+  "version": "0.1.0",
+  "description": "The Omie API's sdk for nodejs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc --build",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RogaLabs/omie-node-sdk.git"
+  },
+  "keywords": [
+    "omie",
+    "sdk",
+    "node",
+    "api"
+  ],
+  "author": {
+    "name": "Rogalabs",
+    "email": "suporte@rogalabs.com",
+    "url": "https://www.rogalabs.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RogaLabs/omie-node-sdk/issues"
+  },
+  "homepage": "https://github.com/RogaLabs/omie-node-sdk#readme",
+  "files": [
+    "dist/**/*"
+  ],
+  "devDependencies": {
+    "@types/config": "^0.0.36",
+    "@types/jest": "^24.0.23",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "eslint": "^6.7.1",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.5",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "config": "^3.2.4"
+  }
+}
