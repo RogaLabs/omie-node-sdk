@@ -42,7 +42,7 @@ export class ApiClient {
     this.appSecret = config.get('Credentials.app_secret')
 
     this.axios = axios.create({
-      baseURL: 'http://app.omie.com.br/api/v1/geral/',
+      baseURL: 'http://app.omie.com.br/api/v1/',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
