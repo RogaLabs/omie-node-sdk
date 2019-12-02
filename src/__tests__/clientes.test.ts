@@ -1,9 +1,10 @@
-import { Customers, OmieCustomer } from '../customers'
+import { Clientes } from '../clientes'
+import { ClientesCadastro } from '../interfaces/clientes-cadastro'
 import { AxiosResponse } from 'axios'
 
-jest.mock('../customers')
-const MockedCustomers = Customers as jest.Mock<Customers>
-MockedCustomers.prototype.upsert.mockImplementation((user: OmieCustomer) => {
+jest.mock('../clientes')
+const MockedClientes = Clientes as jest.Mock<Clientes>
+MockedClientes.prototype.upsert.mockImplementation((user: ClientesCadastro) => {
   return new Promise((resolve, reject) => {
     if (user.cnpj_cpf) {
       const res: AxiosResponse = {
@@ -28,19 +29,19 @@ MockedCustomers.prototype.upsert.mockImplementation((user: OmieCustomer) => {
 })
 
 beforeEach(() => {
-  MockedCustomers.mockClear()
+  MockedClientes.mockClear()
 })
 
-describe('Customers', () => {
-  it('Creates an instance of Customers', () => {
-    const customers = new Customers()
-    expect(customers).toBeInstanceOf(Customers)
+describe('Clientes', () => {
+  it('Creates an instance of Clientes', () => {
+    const clientes = new Clientes()
+    expect(clientes).toBeInstanceOf(Clientes)
   })
 
   it('resolves a promise on successful upsert', () => {
-    const customers = new MockedCustomers()
+    const Clientes = new MockedClientes()
     /* eslint-disable camelcase, @typescript-eslint/camelcase */
-    const user: OmieCustomer = {
+    const user: ClientesCadastro = {
       codigo_cliente_integracao: '12345678909',
       nome_fantasia: 'Test',
       razao_social: 'Test LTDA',
@@ -48,14 +49,14 @@ describe('Customers', () => {
     }
     /* eslint-enable camelcase, @typescript-eslint/camelcase */
     expect.assertions(1)
-    return customers.upsert(user)
+    return Clientes.upsert(user)
       .then((res: AxiosResponse) => expect(res.data).toBe(user))
   })
 
   it('rejects a promise on failed upsert', () => {
-    const customers = new MockedCustomers()
+    const Clientes = new MockedClientes()
     /* eslint-disable camelcase, @typescript-eslint/camelcase */
-    const user: OmieCustomer = {
+    const user: ClientesCadastro = {
       codigo_cliente_integracao: '12345678909',
       nome_fantasia: 'Test',
       razao_social: 'Test LTDA',
@@ -63,7 +64,7 @@ describe('Customers', () => {
     }
     /* eslint-enable camelcase, @typescript-eslint/camelcase */
     expect.assertions(1)
-    return expect(customers.upsert(user)).rejects.toEqual({
+    return expect(Clientes.upsert(user)).rejects.toEqual({
       data: { faltstring: 'cnpj_cpf é obrigatório', faltcode: 'SOAP-ENV:Client-101' },
       status: 500,
       statusText: 'SERVER ERROR',
